@@ -7,7 +7,7 @@
 // ==/UserScript==
 
 /*--- Create a named link for every poster.
-      Clicking this link will deconste every post
+      Clicking this link will hide every post
       not made by that poster - ISOing poster.
 */
 
@@ -28,7 +28,7 @@ while (tryings < elmPosts.length) {
 const nameCounts = {};
 nameListUn.forEach(function(x) { nameCounts[x] = (nameCounts[x] || 0)+1; });
 
-// Deconste duplicate names
+// Deletes duplicate names
 // AND SORTS THEM PROPERLY HALLELUJAH
 const nameList = [...new Set(nameListUn)].sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
@@ -86,7 +86,7 @@ for (const name in nameList) {
     elmContainerTwo.appendChild(elmNewContent);
 }
 
-// Default link retets posts to normal
+// Default link resets posts to normal
 const defaultButton = () => {
     const elmNewContent = document.createElement('a');
     elmNewContent.href = '#';
