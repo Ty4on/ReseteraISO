@@ -146,11 +146,11 @@ function defaultClick() {
         elmPosts[index].style.display = '';
         index++;
     }
-    console.log(getUrlNumber());
+    // console.log(getUrlNumber());
     const number = parseInt(getUrlNumber()) + 1;
     let url = putUrlNumber(number);
     if (url) {
-        reFetch(url);
+        // reFetch(url);
     }
     event.preventDefault();
 }
@@ -159,7 +159,7 @@ const urlIncludesPage = (url) => {
     let end = url.length;
     let string = "page";
     let index = url.indexOf(string);
-    console.log(index)
+    // console.log(index)
     if (index === -1 || index + 8 < end) {
         return false;
     }
