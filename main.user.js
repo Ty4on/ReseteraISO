@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ISOing user's posts Resetera
 // @description Adds list of names to ISO at the bottom of the page
-// @version     2.4
+// @version     2.4.1
 // @namespace   https://github.com/Ty4on/ReseteraISO
 // @updateURL   https://github.com/Ty4on/ReseteraISO/raw/main/main.user.js
 // @downloadURL https://github.com/Ty4on/ReseteraISO/raw/main/main.user.js
@@ -62,7 +62,7 @@ nameListUn.forEach(function(x) { nameCounts[x] = (nameCounts[x] || 0)+1; });
 const nameList = [...new Set(nameListUn)].sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
 // Finds place to put links
-const elmEnds = document.getElementsByClassName(topBreadcrumbArea); //breadcrumb p-breadcrumb--bottom
+const elmEnds = document.getElementsByClassName(topBreadcrumbArea);
 const elmEnd = elmEnds[0];
 
 const elmContainer = document.createElement('div');
@@ -89,7 +89,7 @@ for (const name in nameList) {
     elmContainer.appendChild(elmNewContent);
 }
 
-const elmEndBottoms = document.getElementsByClassName(bottomBreadcrumbArea); //breadcrumb p-breadcrumb--bottom
+const elmEndBottoms = document.getElementsByClassName(bottomBreadcrumbArea);
 const elmEndBottom = elmEndBottoms[0];
 
 const elmContainerTwo = document.createElement('div');
@@ -129,7 +129,7 @@ const defaultButton = () => {
 
 defaultButton();
 
-// Function that deconstes other posts
+// Function that deletes other posts
 function nameClick(person) {
     for (let element in elmContainerTwo.children) {
         if (elmContainerTwo.children[element].tagName === 'A' && elmContainerTwo.children[element].innerText !== event.target.innerText) {
