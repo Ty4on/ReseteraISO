@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name        ISOing user's posts Resetera
 // @description Adds list of names to ISO at the bottom of the page
-// @version     2.3.1
+// @version     2.3.2
 // @namespace   https://github.com/Ty4on/ReseteraISO
-// @updateURL   https://raw.githubusercontent.com/Ty4on/ReseteraISO/main/main.user.js
-// @downloadURL https://raw.githubusercontent.com/Ty4on/ReseteraISO/main/main.user.js
+// @updateURL   https://github.com/Ty4on/ReseteraISO/raw/main/main.user.js
+// @downloadURL https://github.com/Ty4on/ReseteraISO/raw/main/main.user.js
 // @license     MIT
 // @homepageURL https://github.com/Ty4on/ReseteraISO
 // @author      Ty4on
