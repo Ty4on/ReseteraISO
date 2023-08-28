@@ -1,21 +1,44 @@
 // ==UserScript==
 // @name        ISOing user's posts Resetera
 // @description Adds list of names to ISO at the bottom of the page
-// @version     2.2
-// @namespace   https://github.com/Ty4on/ReseteraISO/tree/main
+// @version     2.3
+// @namespace   https://github.com/Ty4on/ReseteraISO
 // @updateURL   https://raw.githubusercontent.com/Ty4on/ReseteraISO/main/main.user.js
 // @downloadURL https://raw.githubusercontent.com/Ty4on/ReseteraISO/main/main.user.js
 // @license     MIT
-// @homepageURL https://github.com/Ty4on/ReseteraISO/tree/main
+// @homepageURL https://github.com/Ty4on/ReseteraISO
 // @author      Ty4on
 // @match       http*://www.resetera.com/threads/*
 // @match       http*://www.resetera.com/threads/*/*
+// @match     http*://www.outermafia.com/threads/*
+// @match     http*://www.outermafia.com/threads/*/*
 // ==/UserScript==
 
 /*--- Create a named link for every poster.
       Clicking this link will hide every post
       not made by that poster - ISOing poster.
 */
+
+// Define possible sites
+const ResetEra = "www.resetera.com";
+const OuterMafia = "www.outermafia.com";
+
+// Find current site
+const currentSite = window.location.hostname;
+
+let topBreadcrumbArea = "breadcrumb";
+let bottomBreadcrumbArea = "breadcrumb p-breadcrumb--bottom";
+
+if (currentSite == ResetEra) {
+    topBreadcrumbArea = "breadcrumb";
+    bottomBreadcrumbArea = "breadcrumb p-breadcrumb--bottom";
+} else if (currentSite == OuterMafia) {
+    topBreadcrumbArea = "p-breadcrumbs";
+    bottomBreadcrumbArea = "p-breadcrumbs p-breadcrumbs--bottom";
+} else {
+    console.log("oh no where am I?");
+    console.log(currentSite);
+}
 
 // Find post start
 const elmPosts = document.getElementsByClassName("message   message--post");
@@ -39,7 +62,7 @@ nameListUn.forEach(function(x) { nameCounts[x] = (nameCounts[x] || 0)+1; });
 const nameList = [...new Set(nameListUn)].sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
 // Finds place to put links
-const elmEnds = document.getElementsByClassName("breadcrumb"); //breadcrumb p-breadcrumb--bottom
+const elmEnds = document.getElementsByClassName(topBreadcrumbArea); //breadcrumb p-breadcrumb--bottom
 const elmEnd = elmEnds[0];
 
 const elmContainer = document.createElement('div');
@@ -66,7 +89,7 @@ for (const name in nameList) {
     elmContainer.appendChild(elmNewContent);
 }
 
-const elmEndBottoms = document.getElementsByClassName("breadcrumb p-breadcrumb--bottom"); //breadcrumb p-breadcrumb--bottom
+const elmEndBottoms = document.getElementsByClassName(bottomBreadcrumbArea); //breadcrumb p-breadcrumb--bottom
 const elmEndBottom = elmEndBottoms[0];
 
 const elmContainerTwo = document.createElement('div');
