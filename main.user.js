@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ISOing user's posts Resetera
 // @description Adds list of names to ISO at the bottom of the page
-// @version     2.3.2
+// @version     2.4
 // @namespace   https://github.com/Ty4on/ReseteraISO
 // @updateURL   https://github.com/Ty4on/ReseteraISO/raw/main/main.user.js
 // @downloadURL https://github.com/Ty4on/ReseteraISO/raw/main/main.user.js
@@ -175,73 +175,4 @@ function defaultClick() {
         elmPosts[index].style.display = '';
         index++;
     }
-    // console.log(getUrlNumber());
-    const number = parseInt(getUrlNumber()) + 1;
-    let url = putUrlNumber(number);
-    if (url) {
-        // reFetch(url);
-    }
-    event.preventDefault();
-}
-
-const urlIncludesPage = (url) => {
-    let end = url.length;
-    let string = "page";
-    let index = url.indexOf(string);
-    // console.log(index)
-    if (index === -1 || index + 8 < end) {
-        return false;
-    }
-    return true;
-}
-
-const getUrlNumber = () => {
-    let url = window.location.href;
-    if (!urlIncludesPage(url)) {
-        return false;
-    }
-    let end = url.length;
-    let lastDigit;
-    while (end > 0) {
-        if (!isNaN(parseInt(url[end]))) {
-            lastDigit = url[end];
-            break;
-        } else {
-            end--;
-        }
-    }
-    let firstDigit;
-    end--;
-    while (!isNaN(parseInt(url[end]))) {
-        firstDigit = url[end];
-        lastDigit = firstDigit + lastDigit;
-        end--;
-    }
-    return lastDigit;
-}
-
-const putUrlNumber = (number) => {
-    let url = window.location.href;
-    if (!url) {
-        return false;
-    }
-    if (!number) {
-        let newUrl = url + "page-2";
-        return newUrl;
-    }
-    let end = url.length;
-    while (isNaN(parseInt(url[end]))) {
-        end--;
-    }
-    while (!isNaN(parseInt(url[end]))) {
-        end--;
-    }
-    let newUrl = url.slice(0, end + 1);
-    return newUrl.concat(number);
-}
-
-function reFetch(url) {
-    fetch(url)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
 }
