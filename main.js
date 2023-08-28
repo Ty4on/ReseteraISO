@@ -2,6 +2,7 @@
 // @name        ISOing user's posts Resetera
 // @description Adds list of names to ISO at the bottom of the page
 // @version 2
+// @updateURL https://raw.githubusercontent.com/Ty4on/ReseteraISO/main/main.js
 // @match     http*://www.resetera.com/threads/*
 // @match     http*://www.resetera.com/threads/*/*
 // ==/UserScript==
