@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ISOing user's posts Resetera
 // @description Adds list of names to ISO at the bottom of the page
-// @version     2
+// @version     2.1
 // @namespace   https://github.com/Ty4on/ReseteraISO/tree/main
 // @updateURL   https://raw.githubusercontent.com/Ty4on/ReseteraISO/main/main.user.js
 // @downloadURL https://raw.githubusercontent.com/Ty4on/ReseteraISO/main/main.user.js
@@ -16,6 +16,8 @@
       Clicking this link will hide every post
       not made by that poster - ISOing poster.
 */
+
+console.log("Updated")
 
 // Find post start
 const elmPosts = document.getElementsByClassName("message   message--post");
